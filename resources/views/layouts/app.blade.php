@@ -79,7 +79,7 @@
                             @endif
 
                             @if (Route::has('adminmain'))
-                            @if (Auth::user()->role == '1')
+                            @if (Auth::user()->role == 2)
                                 <li class="nav-item d-inline">
                                     <a class="nav-link" href="{{ route('adminmain') }}">{{ __('Account Maintenance') }}</a>
                                 </li>

@@ -42,18 +42,18 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-end">Gender</label>
                        
                         <div class="col-md-3 gender">
+                        <?php
+                            use App\Models\Gender;
+                            $genders = Gender::all();
+                        ?>
+                        @foreach($genders as $g)
                                 <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="male">
-                                <label class="form-check-label" for="gender">
-                                  Male
+                                <input class="form-check-input" type="radio" name="gender_id" id="gender_id" value="{{$g->id}}">
+                                <label class="form-check-label" for="gender_id">
+                                  {{$g->gender_desc}}
                                 </label>
                               </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
-                                <label class="form-check-label" for="gender">
-                                  Female
-                                </label>
-                              </div>
+                        @endforeach      
                                 @error('gender')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -64,11 +64,16 @@
                     </div>
 
                     <div class="row mb-3">
+                    <?php
+                            use App\Models\Role;
+                            $roles = Role::all();
+                        ?>
                             <label for="role" class="col-md-4 col-form-label text-md-end">Role</label>
                                 <div class="col-md-6">
                                 <select class="form-select" aria-label="Default select example" name="is_admin">
-                                    <option value="0">User</option>
-                                    <option value="1">Admin</option>
+                                    @foreach($roles as $r)
+                                    <option value="{{$r->id}}">{{$r->role_name}}</option>
+                                    @endforeach
                                 </select>
                                 </div>
                     </div>

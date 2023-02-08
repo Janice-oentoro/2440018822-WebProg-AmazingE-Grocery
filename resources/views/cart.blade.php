@@ -20,9 +20,9 @@
       <div class="card-body d-flex flex-column">
       <h5 class="card-title">{{$item->products->name}}</h5>
 
-    <?php $total += $item->products->price; ?>
+    <?php $total += $item->product_price; ?>
       
-    <form action="/destroy/{{$item->id}}" method="POST">
+    <form action="/destroy1/{{$item->id}}" method="POST">
         @csrf
         @method('delete')
     <button class="btn btn-danger">Remove</button> 

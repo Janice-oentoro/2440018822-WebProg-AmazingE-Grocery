@@ -9,7 +9,7 @@
             <img src="/storage/user/{{Auth::user()->image}}" class="card-img-top" height="500px" width="150px" alt="Card image cap">
                 <div class="card-header">{{ __('Profile') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="/update/{{$user->id}}" enctype="multipart/form-data">
+                    <form method="POST" action="/update1/{{$user->id}}" enctype="multipart/form-data">
                         @csrf
                         @method('patch')
                         <div class="row mb-3">
@@ -42,7 +42,7 @@
                         <div class="row mb-1">
                         @php $checkedmale = ''; $checkedfemale = '';
                         @endphp
-                        @if(Auth::user()->gender == 'male')
+                        @if(Auth::user()->genders->gender_desc == 'Male')
                             @php $checkedmale = 'checked';
                             @endphp
                         @else
@@ -53,18 +53,32 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-end">Gender</label>
                        
                         <div class="col-md-3 gender">
+                        <?php
+                            use App\Models\Gender;
+                            $genders = Gender::all();
+                        ?>
+                        @foreach($genders as $g)
                                 <div class="form-check">
-                                <input {{$checkedmale}} class="form-check-input" type="radio" name="gender" id="gender" value="male">
-                                <label class="form-check-label" for="gender">
-                                  Male
+                                @if(Auth::user()->genders->gender_desc == 'Male')
+                                <input {{$checkedmale}} class="form-check-input" type="radio" name="gender_id" id="gender_id" value="{{$g->id}}">
+                                <label class="form-check-label" for="gender_id">
+                                {{$g->gender_desc}}
                                 </label>
-                              </div>
-                              <div class="form-check">
-                                <input {{$checkedfemale}} class="form-check-input" type="radio" name="gender" id="gender" value="female">
-                                <label class="form-check-label" for="gender">
-                                  Female
+
+                                @elseif(Auth::user()->genders->gender_desc == 'Female')
+                                <input {{$checkedfemale}} class="form-check-input" type="radio" name="gender_id" id="gender_id" value="{{$g->id}}">
+                                <label class="form-check-label" for="gender_id">
+                                {{$g->gender_desc}}
                                 </label>
+
+                                @else
+                                <input class="form-check-input" type="radio" name="gender_id" id="gender_id" value="{{$g->id}}">
+                                <label class="form-check-label" for="gender_id">
+                                {{$g->gender_desc}}
+                                </label>
+                                @endif
                               </div>
+                        @endforeach      
                                 @error('gender')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -72,23 +86,23 @@
                                 @enderror
                         </div>
                        </div> 
-                    </div>
 
-                    @if(Auth::user()->role == 1)
                     @php $selected = 'selected';
                     @endphp
                     <div class="row mb-3">
                             <label for="role" class="col-md-4 col-form-label text-md-end">Role</label>
                                 <div class="col-md-6">
-                                <select class="form-select" aria-label="Default select example" name="is_admin">
-                                    <option value="0">User</option>
-                                    <option {{$selected}} value="1">Admin</option>
+                                <select class="form-select" aria-label="Default select example" name="is_admin" disabled>
+                                @if(Auth::user()->role == 2)
+                                    <option {{$selected}} value="2">Admin</option>
+                                @else
+                                    <option {{$selected}} value="1">User</option>
                                 </select>
+                                @endif
                                 </div>
                     </div>
-                    @endif
-                        
-                        <div class="row mb-3">
+
+                    <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
@@ -101,7 +115,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
@@ -131,7 +144,7 @@
                             </div>
                             
                           </div>
-
+                </div>
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

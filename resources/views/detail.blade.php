@@ -31,6 +31,7 @@
         @csrf
           <input type="hidden" class="user_id" name="user_id" id="user_id" value="{{ Auth::user()->id }}">
           <input type="hidden" class="product_id" name="product_id" id="product_id" value="{{ $product->id }}">
+          <input type="hidden" class="product_price" name="product_price" id="product_price" value="{{ $product->price }}">
             <button class="btn btn-success mt-auto d-flex">Purchase</button>    
      
         </form>

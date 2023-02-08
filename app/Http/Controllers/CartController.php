@@ -29,6 +29,7 @@ class CartController extends Controller
         $cart = new Cart();
         $cart->user_id = $request->user_id;
         $cart->product_id = $request->product_id;
+        $cart->product_price = $request->product_price;
         $cart->save();
 
         return redirect('cart');    

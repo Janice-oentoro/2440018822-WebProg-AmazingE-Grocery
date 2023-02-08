@@ -45,7 +45,7 @@ class HomeController extends Controller
         return view('profile', compact('user'));
     }
 
-    public function update(Request $request, $id){
+    public function update1(Request $request, $id){
         $image = $request->file('image');
         $imageName = Hash::make($image);
         Storage::putFileAs('public/user', $image, $imageName);
@@ -54,7 +54,7 @@ class HomeController extends Controller
             ->update([
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
-                'gender' => $request->gender,
+                'gender_id' => $request->gender_id,
                 'email' => $request->email,
                 'password' => Hash::make($request['password']),
                 'image' => $imageName

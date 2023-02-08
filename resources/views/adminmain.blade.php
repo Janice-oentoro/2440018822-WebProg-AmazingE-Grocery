@@ -19,7 +19,7 @@
   <tbody>
   @foreach($users as $u)
   <?php 
-  if($u->role == '1') {
+  if($u->role == '2') {
     $rolename = "Admin";
   } else {$rolename = "User";}
   ?>
@@ -32,9 +32,6 @@
         @method('delete')
     <button class="btn btn-danger">Remove</button> 
     </form>
-
-
-
       </td>
     </tr>
   @endforeach  

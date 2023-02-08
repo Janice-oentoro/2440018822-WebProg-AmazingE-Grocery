@@ -25,12 +25,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/exit', [App\Http\Controllers\HomeController::class, 'exit'])->name('exit');
 Route::get('/detail/{id}', [App\Http\Controllers\HomeController::class, 'detail'])->name('detail');
 Route::get('/profile/{id}', [App\Http\Controllers\HomeController::class, 'editUser'])->name('profile');
-Route::patch('/update/{id}', [App\Http\Controllers\HomeController::class, 'update']);
+Route::patch('/update1/{id}', [App\Http\Controllers\HomeController::class, 'update1']);
 Route::get('/saved', function () {return view('saved');});
 // Cart
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'viewCart'])->name('cart');
 Route::post('/cartadd', [App\Http\Controllers\CartController::class, 'cartAdd']);
-Route::delete('/destroy/{id}', [App\Http\Controllers\CartController::class, 'destroyItem']); 
+Route::delete('/destroy1/{id}', [App\Http\Controllers\CartController::class, 'destroyItem']); 
 Route::post('/transaction', [App\Http\Controllers\CartController::class, 'transaction']);
 });
 
