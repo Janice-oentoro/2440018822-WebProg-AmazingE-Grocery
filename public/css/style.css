@@ -1,0 +1,109 @@
+.sitename{
+    background-color: aquamarine;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-top: 0.05%;
+    padding-bottom: 0.05%;
+}
+
+.footer1{
+    margin-top: 3%;
+    background-color: aquamarine;
+    position: relative;
+    align-items: center;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-top: 0.5%;
+    padding-bottom: 0.005%;
+}
+
+.circle {
+    width: 35%;
+    height: 35%;
+    line-height: 500px;
+    border-radius: 50%;
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    background: #fff
+  }
+
+.veggies{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.005%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 3%;
+}  
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+
+.center1{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text1{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.text2{
+    font-size: 15px;
+    margin-bottom: 2%;
+}
+
+.text3{
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 2%;
+}
+
+.c1{
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 15%;
+    margin-top: -10%;
+    margin-bottom: 0%;
+}
+
+.c2{
+    margin-top: -10%;
+    margin-bottom: 0%;
+}
+
+.circle1{
+    align-items: center;
+    justify-content: center;
+    background: #fff
+}
+
+.cart1{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.005%;
+    margin-left: 3%;
+    margin-right: 5%;
+    margin-bottom: 1%;
+} 
+
+.cardtotal{
+    font-weight: bold;
+    font-size: 15px;
+    margin-top: 1%;
+
+}
