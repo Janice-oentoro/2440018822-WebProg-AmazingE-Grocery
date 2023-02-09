@@ -19,11 +19,16 @@
                         @csrf
                         @method('put')
                     <div class="row mb-3">
+                    <?php
+                            use App\Models\Role;
+                            $roles = Role::all();
+                        ?>
                             <label for="role" class="col-md-4 col-form-label text-md-end">Role</label>
                                 <div class="col-md-6">
                                 <select class="form-select" aria-label="Default select example" name="is_admin">
-                                    <option value="0">User</option>
-                                    <option value="1">Admin</option>
+                                     @foreach($roles as $r)
+                                        <option value="{{$r->id}}">{{$r->role_name}}</option>
+                                    @endforeach
                                 </select>
                                 </div>
                     </div>
